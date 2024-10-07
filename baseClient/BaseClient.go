@@ -60,12 +60,12 @@ func (auth *Auth) InitCloudAuth(ak string, sk string) {
 	auth.ak = ak
 	auth.sk = sk
 	auth.client = http.Client{
-		Timeout: time.Second * 20,	
+		Timeout: time.Second * 20,
 	}
 	auth.isCloudUser = true
 }
+
 func (auth *Auth) refresh() {
-	log.Println("get access_token")
 	now := time.Now().Unix()
 	url := fmt.Sprintf(authUrl, auth.ak, auth.sk)
 	resp, err := auth.client.Get(url)
@@ -162,7 +162,7 @@ func (auth *Auth) setParam(url string) string {
 	return buffer.String()
 }
 
-func PostJson(urlString string, data string, auth *Auth) string {
+func PostJson(urlString string, data string, auth *Auth) (string, error) {
 	now := time.Now().Unix()
 	if auth.hasAuth && auth.times < now && !auth.isCloudUser {
 		auth.refresh()
@@ -174,16 +174,16 @@ func PostJson(urlString string, data string, auth *Auth) string {
 	client := auth.client
 	resp, err := client.Do(req)
 	if err != nil {
-		return err.Error()
+		return "", err
 	}
 	defer func(Body io.ReadCloser) {
 		_ = Body.Close()
 	}(resp.Body)
 	body, _ := ioutil.ReadAll(resp.Body)
-	return string(body)
+	return string(body), nil
 }
 
-func PostUrlForm(urlString string, data map[string]string, auth *Auth) string {
+func PostUrlForm(urlString string, data map[string]string, auth *Auth) (string, error) {
 	if !auth.isCloudUser {
 		now := time.Now().Unix()
 		if !auth.hasAuth || (auth.hasAuth && auth.times < now) {
@@ -203,8 +203,9 @@ func PostUrlForm(urlString string, data map[string]string, auth *Auth) string {
 	client := auth.client
 	resp, err := client.Do(req)
 	if err != nil {
-		return err.Error()
+		return "", err
 	}
+
 	defer func(Body io.ReadCloser) {
 		_ = Body.Close()
 	}(resp.Body)
@@ -212,12 +213,13 @@ func PostUrlForm(urlString string, data map[string]string, auth *Auth) string {
 	var jsonMap map[string]interface{}
 	err = json.Unmarshal(body, &jsonMap)
 	if err != nil {
-		log.Println("ger &s response %s is not json", urlString, string(body))
+		return "", err
 	} else {
 		errorCode, ok := jsonMap["error_code"]
 		if ok && int(errorCode.(float64)) == 14 {
 			auth.isCloudUser = false
 		}
 	}
-	return string(body)
+
+	return string(body), nil
 }

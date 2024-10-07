@@ -3,11 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/Baidu-AIP/golang-sdk/aip/imagesearch"
+	"github.com/lufei/baidu-golang-sdk/aip/imagesearch"
 
-	"github.com/Baidu-AIP/golang-sdk/util"
-
-	"github.com/Baidu-AIP/golang-sdk/test/resources"
+	"github.com/lufei/baidu-golang-sdk/util"
 )
 
 var image = util.ReadFileToBase64("test/resources/image/baidu_image.png")
@@ -170,7 +168,6 @@ func ProductDeleteSignTest(client *imagesearch.ImageSearchClient) {
 	fmt.Println(client.ProductDeleteSign(contSign, options))
 }
 
-
 // *****************  绘本图片搜索  ********************
 
 // PictureBookAddTest 绘本图片搜索 - 入库
@@ -223,10 +220,9 @@ func PictureBookDeleteSignTest(client *imagesearch.ImageSearchClient) {
 	fmt.Println(client.PictureBookDeleteSign(contSign, options))
 }
 
-
 func main() {
 
-	var client = imagesearch.NewClient(resources.Ak, resources.SK)
+	var client = imagesearch.NewClient("", "")
 
 	SimilarAddTest(client)
 	SimilarAddUrlTest(client)
@@ -239,7 +235,6 @@ func main() {
 	SimilarDeleteUrlTest(client)
 	SimilarDeleteSignTest(client)
 
-
 	SameHqAddTest(client)
 	SameHqAddUrlTest(client)
 	SameHqSearchTest(client)
@@ -250,8 +245,6 @@ func main() {
 	SameHqDeleteTest(client)
 	SameHqDeleteUrlTest(client)
 	SameHqDeleteSignTest(client)
-
-
 
 	ProductAddTest(client)
 	ProductAddUrlTest(client)
@@ -264,7 +257,6 @@ func main() {
 	ProductDeleteUrlTest(client)
 	ProductDeleteSignTest(client)
 
-
 	PictureBookAddTest(client)
 	PictureBookAddUrlTest(client)
 	PictureBookSearchTest(client)
@@ -275,6 +267,4 @@ func main() {
 	PictureBookDeleteTest(client)
 	PictureBookDeleteUrlTest(client)
 	PictureBookDeleteSignTest(client)
-
 }
-

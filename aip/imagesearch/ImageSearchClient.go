@@ -17,10 +17,9 @@ limitations under the License.
 package imagesearch
 
 import (
-
 	"strconv"
 
-	"github.com/Baidu-AIP/golang-sdk/baseClient"
+	"github.com/lufei/baidu-golang-sdk/baseClient"
 )
 
 const __imageSearchSameHqAdd = "https://aip.baidubce.com/rest/2.0/realtime_search/same_hq/add"
@@ -55,7 +54,6 @@ const __imageSearchPictureBookDelete = "https://aip.baidubce.com/rest/2.0/images
 
 const __imageSearchPictureBookUpdate = "https://aip.baidubce.com/rest/2.0/imagesearch/v1/realtime_search/picturebook/update"
 
-
 type ImageSearchClient struct {
 	auth baseClient.Auth
 }
@@ -76,7 +74,7 @@ func NewCloudClient(ak string, sk string) *ImageSearchClient {
 
 // SimilarAdd 相似图片搜索 - 入库
 func (client *ImageSearchClient) SimilarAdd(image string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -94,7 +92,7 @@ func (client *ImageSearchClient) SimilarAdd(image string, brief string,
 
 // SimilarAddUrl 相似图片搜索 - 入库
 func (client *ImageSearchClient) SimilarAddUrl(url string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -111,7 +109,7 @@ func (client *ImageSearchClient) SimilarAddUrl(url string, brief string,
 }
 
 // SimilarSearch 相似图片搜索 - 检索
-func (client *ImageSearchClient) SimilarSearch(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarSearch(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -127,7 +125,7 @@ func (client *ImageSearchClient) SimilarSearch(image string, options map[string]
 }
 
 // SimilarSearchUrl 相似图片搜索 - 检索
-func (client *ImageSearchClient) SimilarSearchUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarSearchUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -143,7 +141,7 @@ func (client *ImageSearchClient) SimilarSearchUrl(url string, options map[string
 }
 
 // SimilarDelete 相似图片搜索 - 删除
-func (client *ImageSearchClient) SimilarDelete(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarDelete(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -159,7 +157,7 @@ func (client *ImageSearchClient) SimilarDelete(image string, options map[string]
 }
 
 // SimilarDeleteUrl 相似图片搜索 - 删除
-func (client *ImageSearchClient) SimilarDeleteUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarDeleteUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -175,7 +173,7 @@ func (client *ImageSearchClient) SimilarDeleteUrl(url string, options map[string
 }
 
 // SimilarDeleteSign 相似图片搜索 - 删除
-func (client *ImageSearchClient) SimilarDeleteSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarDeleteSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -191,7 +189,7 @@ func (client *ImageSearchClient) SimilarDeleteSign(contSign string, options map[
 }
 
 // SimilarUpdate 相似图片搜索 - 更新
-func (client *ImageSearchClient) SimilarUpdate(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarUpdate(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -207,7 +205,7 @@ func (client *ImageSearchClient) SimilarUpdate(image string, options map[string]
 }
 
 // SimilarUpdateUrl 相似图片搜索 - 更新
-func (client *ImageSearchClient) SimilarUpdateUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarUpdateUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -223,7 +221,7 @@ func (client *ImageSearchClient) SimilarUpdateUrl(url string, options map[string
 }
 
 // SimilarUpdateSign 相似图片搜索 - 更新
-func (client *ImageSearchClient) SimilarUpdateSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SimilarUpdateSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -240,7 +238,7 @@ func (client *ImageSearchClient) SimilarUpdateSign(contSign string, options map[
 
 // SameHqAdd 相同图片搜索 - 入库
 func (client *ImageSearchClient) SameHqAdd(image string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -258,7 +256,7 @@ func (client *ImageSearchClient) SameHqAdd(image string, brief string,
 
 // SameHqAddUrl 相同图片搜索 - 入库
 func (client *ImageSearchClient) SameHqAddUrl(image string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -275,7 +273,7 @@ func (client *ImageSearchClient) SameHqAddUrl(image string, brief string,
 }
 
 // SameHqSearch 相同图片搜索 - 检索
-func (client *ImageSearchClient) SameHqSearch(image string,	options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqSearch(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -291,7 +289,7 @@ func (client *ImageSearchClient) SameHqSearch(image string,	options map[string]i
 }
 
 // SameHqSearchUrl 相同图片搜索 - 检索
-func (client *ImageSearchClient) SameHqSearchUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqSearchUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -307,7 +305,7 @@ func (client *ImageSearchClient) SameHqSearchUrl(url string, options map[string]
 }
 
 // SameHqDelete 相同图片搜索 - 删除
-func (client *ImageSearchClient) SameHqDelete(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqDelete(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -323,7 +321,7 @@ func (client *ImageSearchClient) SameHqDelete(image string, options map[string]i
 }
 
 // SameHqDeleteUrl 相同图片搜索 - 删除
-func (client *ImageSearchClient) SameHqDeleteUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqDeleteUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -339,7 +337,7 @@ func (client *ImageSearchClient) SameHqDeleteUrl(url string, options map[string]
 }
 
 // SameHqDeleteSign 相同图片搜索 - 删除
-func (client *ImageSearchClient) SameHqDeleteSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqDeleteSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -355,7 +353,7 @@ func (client *ImageSearchClient) SameHqDeleteSign(contSign string, options map[s
 }
 
 // SameHqUpdate 相同图片搜索 - 更新
-func (client *ImageSearchClient) SameHqUpdate(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqUpdate(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -371,7 +369,7 @@ func (client *ImageSearchClient) SameHqUpdate(image string, options map[string]i
 }
 
 // SameHqUpdateUrl 相同图片搜索 - 更新
-func (client *ImageSearchClient) SameHqUpdateUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqUpdateUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -387,7 +385,7 @@ func (client *ImageSearchClient) SameHqUpdateUrl(url string, options map[string]
 }
 
 // SameHqUpdateSign 相同图片搜索 - 更新
-func (client *ImageSearchClient) SameHqUpdateSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) SameHqUpdateSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -404,7 +402,7 @@ func (client *ImageSearchClient) SameHqUpdateSign(contSign string, options map[s
 
 // ProductAdd 商品图片搜索 - 入库
 func (client *ImageSearchClient) ProductAdd(image string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -422,7 +420,7 @@ func (client *ImageSearchClient) ProductAdd(image string, brief string,
 
 // ProductAddUrl 商品图片搜索 - 入库
 func (client *ImageSearchClient) ProductAddUrl(url string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -439,7 +437,7 @@ func (client *ImageSearchClient) ProductAddUrl(url string, brief string,
 }
 
 // ProductSearch 商品图片搜索 - 检索
-func (client *ImageSearchClient) ProductSearch(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductSearch(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -455,7 +453,7 @@ func (client *ImageSearchClient) ProductSearch(image string, options map[string]
 }
 
 // ProductSearchUrl 商品图片搜索 - 检索
-func (client *ImageSearchClient) ProductSearchUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductSearchUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -471,7 +469,7 @@ func (client *ImageSearchClient) ProductSearchUrl(url string, options map[string
 }
 
 // ProductUpdate 商品图片搜索 - 更新
-func (client *ImageSearchClient) ProductUpdate(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductUpdate(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -487,7 +485,7 @@ func (client *ImageSearchClient) ProductUpdate(image string, options map[string]
 }
 
 // ProductUpdateUrl 商品图片搜索 - 更新
-func (client *ImageSearchClient) ProductUpdateUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductUpdateUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -503,7 +501,7 @@ func (client *ImageSearchClient) ProductUpdateUrl(url string, options map[string
 }
 
 // ProductUpdateSign 商品图片搜索 - 更新
-func (client *ImageSearchClient) ProductUpdateSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductUpdateSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -519,7 +517,7 @@ func (client *ImageSearchClient) ProductUpdateSign(contSign string, options map[
 }
 
 // ProductDelete 商品图片搜索 - 删除
-func (client *ImageSearchClient) ProductDelete(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductDelete(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -535,7 +533,7 @@ func (client *ImageSearchClient) ProductDelete(image string, options map[string]
 }
 
 // ProductDeleteUrl 商品图片搜索 - 删除
-func (client *ImageSearchClient) ProductDeleteUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductDeleteUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -551,7 +549,7 @@ func (client *ImageSearchClient) ProductDeleteUrl(url string, options map[string
 }
 
 // ProductDeleteSign 商品图片搜索 - 删除
-func (client *ImageSearchClient) ProductDeleteSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) ProductDeleteSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -568,7 +566,7 @@ func (client *ImageSearchClient) ProductDeleteSign(contSign string, options map[
 
 // PictureBookAdd 绘本图片搜索 - 入库
 func (client *ImageSearchClient) PictureBookAdd(image string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -586,7 +584,7 @@ func (client *ImageSearchClient) PictureBookAdd(image string, brief string,
 
 // PictureBookAddUrl 绘本图片搜索 - 入库
 func (client *ImageSearchClient) PictureBookAddUrl(url string, brief string,
-	options map[string]interface{}) (result string) {
+	options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -603,7 +601,7 @@ func (client *ImageSearchClient) PictureBookAddUrl(url string, brief string,
 }
 
 // PictureBookSearch 绘本图片搜索 - 检索
-func (client *ImageSearchClient) PictureBookSearch(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookSearch(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -619,7 +617,7 @@ func (client *ImageSearchClient) PictureBookSearch(image string, options map[str
 }
 
 // PictureBookSearchUrl 绘本图片搜索 - 检索
-func (client *ImageSearchClient) PictureBookSearchUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookSearchUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -635,7 +633,7 @@ func (client *ImageSearchClient) PictureBookSearchUrl(url string, options map[st
 }
 
 // PictureBookDelete 绘本图片搜索 - 删除
-func (client *ImageSearchClient) PictureBookDelete(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookDelete(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -651,7 +649,7 @@ func (client *ImageSearchClient) PictureBookDelete(image string, options map[str
 }
 
 // PictureBookDeleteUrl 绘本图片搜索 - 删除
-func (client *ImageSearchClient) PictureBookDeleteUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookDeleteUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -667,7 +665,7 @@ func (client *ImageSearchClient) PictureBookDeleteUrl(url string, options map[st
 }
 
 // PictureBookDeleteSign 绘本图片搜索 - 删除
-func (client *ImageSearchClient) PictureBookDeleteSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookDeleteSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -683,7 +681,7 @@ func (client *ImageSearchClient) PictureBookDeleteSign(contSign string, options 
 }
 
 // PictureBookUpdate 绘本图片搜索 - 更新
-func (client *ImageSearchClient) PictureBookUpdate(image string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookUpdate(image string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["image"] = image
@@ -699,7 +697,7 @@ func (client *ImageSearchClient) PictureBookUpdate(image string, options map[str
 }
 
 // PictureBookUpdateUrl 绘本图片搜索 - 更新
-func (client *ImageSearchClient) PictureBookUpdateUrl(url string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookUpdateUrl(url string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["url"] = url
@@ -715,7 +713,7 @@ func (client *ImageSearchClient) PictureBookUpdateUrl(url string, options map[st
 }
 
 // PictureBookUpdateSign 绘本图片搜索 - 更新
-func (client *ImageSearchClient) PictureBookUpdateSign(contSign string, options map[string]interface{}) (result string) {
+func (client *ImageSearchClient) PictureBookUpdateSign(contSign string, options map[string]interface{}) (string, error) {
 	data := make(map[string]string)
 
 	data["cont_sign"] = contSign
@@ -729,6 +727,3 @@ func (client *ImageSearchClient) PictureBookUpdateSign(contSign string, options 
 
 	return baseClient.PostUrlForm(__imageSearchPictureBookUpdate, data, &client.auth)
 }
-
-
-
